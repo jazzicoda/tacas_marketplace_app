@@ -77,8 +77,4 @@ class ListingsController < ApplicationController
       @categories = Category.all
     end
 
-    def set_artist_name
-      @artist_name = user_id
-    end
-
 end
