@@ -1,3 +1,18 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.landing {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #3F4D42;
+    height: 100%;
+    h1 {
+        color: white;
+    }
+    image_tag {
+        min-height: 60%;
+    }
+}
