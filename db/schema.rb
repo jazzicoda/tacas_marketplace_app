@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_013757) do
     t.string "title"
     t.text "description"
     t.integer "price"
-    t.boolean "sold"
+    t.boolean "sold", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_listings_on_category_id"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2021_08_16_013757) do
 
   create_table "listings_colours", force: :cascade do |t|
     t.bigint "listing_id", null: false
-    t.bigint "colours_id", null: false
+    t.bigint "colour_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["colours_id"], name: "index_listings_colours_on_colours_id"
+    t.index ["colour_id"], name: "index_listings_colours_on_colour_id"
     t.index ["listing_id"], name: "index_listings_colours_on_listing_id"
   end
 
@@ -65,6 +65,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_013757) do
 
   add_foreign_key "listings", "categories"
   add_foreign_key "listings", "users"
-  add_foreign_key "listings_colours", "colours", column: "colours_id"
+  add_foreign_key "listings_colours", "colours"
   add_foreign_key "listings_colours", "listings"
 end
