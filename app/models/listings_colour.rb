@@ -1,4 +1,4 @@
 class ListingsColour < ApplicationRecord
   belongs_to :listing
-  belongs_to :colours
+  belongs_to :colour
 end
