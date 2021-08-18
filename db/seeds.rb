@@ -18,10 +18,20 @@ categories = [
     {name: "Textiles", description: "Fabrics and fibres are transformed into works of art"},
 ]
 
+colours = ["Black", "Blue", "Brown", "Green", "Grey", "Orange", "Red"]
+
+
 if Category.count == 0
     categories.each do |category|
         Category.create(name: category[:name], description: category[:description])
         puts "created #{category[:name]} category"
+    end
+end
+
+if Colour.count == 0
+    colours.each do |colour|
+        Colour.create(name: colour)
+        puts "created #{colour} colour"
     end
 end
 

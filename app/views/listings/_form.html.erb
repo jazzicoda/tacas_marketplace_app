@@ -21,6 +21,15 @@
     <%= form.text_field :title %>
   </div>
 
+  <h5 class=mb-2”>Colours</h5>
+  <div class="form-check">
+        <%=form.collection_check_boxes :colour_ids, Colour.all, :id, :name do |b|%>
+        <%=b.label%>
+        <%=b.check_box%>
+        <%end%>
+  </div>
+
+
   <div class="form-group mb-3">
     <%= form.label :description, class:"col form-label" %>
     <%= form.text_area :description %>
