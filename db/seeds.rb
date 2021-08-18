@@ -31,7 +31,7 @@ end
 if Colour.count == 0
     colours.each do |colour|
         Colour.create(name: colour)
-        puts "created #{colour} colour."
+        puts "created #{colour} colour"
     end
 end
 
