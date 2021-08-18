@@ -18,7 +18,7 @@ categories = [
     {name: "Textiles", description: "Fabrics and fibres are transformed into works of art"},
 ]
 
-colours = ["Black", "Blue", "Brown", "Green", "Grey", "Orange", "Red"]
+colours = ["Black", "Blue", "Brown", "Green", "Grey", "Orange", "Purple", "Red", "Teal"]
 
 
 if Category.count == 0

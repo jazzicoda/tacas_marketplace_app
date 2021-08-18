@@ -1,53 +1,36 @@
-<section class="container d-flex flex-column flex-md-row px-3 my-2 my-md-5">
+<section class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5">
   <div class='content col-12 col-md-7 col-lg-8 p-0 pr-md-3'>
     <div class= "col-12 p-0 main-preview mb-4">
-    <%# <%=image_tag image_select(@listing), class: "thumbnail card-img top"%>
+      <%=image_tag @listing.picture, class: "thumbnail card-img top" if @listing.picture.attached?%>
     </div>
+      <%= link_to 'Edit', edit_listing_path(@listing) %> |
+      <%= link_to 'Back', listings_path %>
   </div>
   <div class='sidebar col-lg-4 p-0 mx-2 d-md-block'>
-    <h1 class="mb-sm-2 md-md-5"><%@listing.title%></h1>
-    <%# uncomment below when colour branch is working and merged - check icecream cones%>
-    <%# @listing.colours.each do |colour|%>
-    <%# <span class="badge badge-pill badge-default"><%=colour.name%>
-    <%# </span><%end%>
+    <h1 class="text-muted mb-sm-2 md-md-5"><%=@listing.title%></h1>
+        <%# <p> %>
+          <%# <strong>Maker:</strong>
+          <%= @listing.user_id %>
+        <%# </p> %>
+
+    <h5 class='text-muted'><%= @listing.category.name %></h5>
+
+
+    <%= @listing.colours.each do |colour|%>
+      <span class= 'badge badge-pill badge-info'><%=colour.name%></span>
+    <%end%>
+
+    <p class='text-muted my-2'><em><%= @listing.description %></em></p>
+
+    <h5 class='text-muted'>$<%= @listing.price %></h5>
+
+    <%# #need to edit this to work properly %>
+    <h5 class='text-muted'>Sold</h5>
+    <%# <p class='text-muted my-2'><%= @listing.sold %>
+    <%# </p> %>
+    
   </div>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+
 
 </section>
-
-<p>
-  <strong>Maker:</strong>
-  <%= @listing.user_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @listing.category.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<%=image_tag @listing.picture, class: "listing-image" if @listing.picture.attached?%>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
-
-<p>
-  <strong>Sold:</strong>
-  <%= @listing.sold %>
-</p>
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
