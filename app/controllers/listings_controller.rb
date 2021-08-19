@@ -1,13 +1,14 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorise_user, only: [:edit, :update,:destroy ]
   before_action :set_categories, only: [:new, :edit]
 
 
   # GET /listings or /listings.json
-  # def index
-  #   @listings = Listing.all.includes(:category)
-  # end
+  def index
+    @listings = Listing.all.includes(:category)
+  end
 
   # # GET /listings/1 or /listings/1.json
   # def show
@@ -100,5 +101,13 @@ class ListingsController < ApplicationController
     def set_categories
       @categories = Category.all
       @colours = Colour.all
+    end
+
+    # Prevent users from edit/destroying other user's listings
+    def authorise_user
+      if current_user.id != @listing.user_id
+        flash[:error] = "Sorry, you can't edit this listing."
+        redirect_to listings_path
+      end
     end
   end
